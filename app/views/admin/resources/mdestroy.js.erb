@@ -1,0 +1,3 @@
+<% if @images.any? %>
+$("<%= @images.each do |i| {"image_#{i.id} "} %>").remove();
+<% end %>

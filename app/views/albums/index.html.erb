@@ -1,0 +1,7 @@
+<% @page_heading = _('Album') %>
+<ul id="blog_albums">
+<% @albums.each do |album| %>
+<%= index_albums(album) %>
+<% end %>
+</ul>
+<div  style="clear:both;"></div>

@@ -1,0 +1,9 @@
+<li class="span3">
+  <p>
+  <%= (link_to_remote(content_tag(:i, '', :class => "icon-ok-circle#{' icon-white' unless album.cover_id == image.id}") + ' Cover', :before => 'resetUs()', :url => {:controller => 'admin/albums', :action => "cover", :id => album.id, :image_id => image.id}, :html => {:id => "cover_#{image.id}", :class => "cover#{' selected' if album.cover_id == image.id}"})).gsub("&#x27;", "'") %>
+  <%=  link_to 'Caption', {:action => 'edit_caption', :controller => 'admin/albums', :id => image.id}, :class => 'fancybox caption', 'data-fancybox-href' => 'iframe' %>
+  <label for="image_<%= image.id %>"><i class="icon-trash icon-white"></i></label>
+  <%= check_box :image, image.id, :checked => false, :class =>'image_check' %>
+  <%= show_image(image) %>
+</p>
+</li>

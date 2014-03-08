@@ -1,0 +1,7 @@
+<% @page_heading = _(@album.name) %>
+<ul id="show_blog_albums">
+<% @album.resources.each do |image| %>
+<%= show_albums(image) %>
+<% end %>
+</ul>
+<div  style="clear:both;"></div>

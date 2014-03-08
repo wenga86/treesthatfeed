@@ -1,0 +1,36 @@
+<% @page_heading = _("Albums") %>
+
+<div class='left_form'>
+  <%= error_messages_for 'album' %>
+  <%= form_tag :action=>"create", :id => @album, :html => {:id => 'add_album'} do |f| %>
+    <%= label :album, :name %>
+    <%= text_field :album, :name, :class => "span12" %>
+
+    <%= label :album, :active_on %>
+    <%= text_field :album, :active_on, :size => 14, :class => "span6" %>
+
+    <%= label :album, :description %>
+    <%= text_area :album, :description, :rows => 8, :class => "span12" %>
+
+    <%= label :album, :approved, :class => 'checkbox' do %>
+      <%= check_box :album, :approved, :checked => true %>
+      Approved
+    <% end %>
+
+    <div class='form-actions'>
+      <%= cancel_or_save %>
+  </div>
+  <% end %>
+</div>
+
+<div class="right_table">
+  <%= content_tag(:h2, "No Albums found", :class => 'align-center') if @albums.empty? %>
+  <ul id="albums">
+  <% @albums.each do |album| %>
+    <%= index_album(album) %>
+  <% end %>
+  </ul>
+</div>
+<script type="text/javascript">
+  jQuery('#album_active_on').datepicker();
+</script>

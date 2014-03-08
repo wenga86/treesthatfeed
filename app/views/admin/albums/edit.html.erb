@@ -1,0 +1,20 @@
+<div class='left_form'>
+<%= form_for @album, :html => {:id => 'update_album'} do |f| %>
+    <%= label :album, :name %>
+    <%= text_field :album, :name, :class => "span12" %>
+
+    <%= label :album, :active_on %>
+    <%= text_field :album, :active_on, :size => 14, :class => "span6" %>
+
+    <%= label :album, :description %>
+    <%= text_area :album, :description, :rows => 8, :class => "span12" %>
+
+    <%= label :album, :approved, :class => 'checkbox' do %>
+      <%= check_box :album, :approved, :checked => true %>
+      Approved
+    <% end %>
+    <div class='form-actions'>
+      <%= cancel_or_save %>
+  </div>
+    <% end %>
+  </div>

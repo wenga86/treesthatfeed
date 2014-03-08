@@ -1,0 +1,10 @@
+ <div class='left_form'>
+ <%= form_tag :action=>"update_caption", :controller => 'admin/albums', :id => @image.id do |f| %>
+ <h2>Edit Image Caption</h2>
+      <label>Picture Description</label>
+    <%= text_area :resource, :itunes_subtitle, :rows => 2, :cols => 40 %>
+    <div class='form-actions'>
+      <%= cancel_or_save %>
+  </div>
+ <% end %>
+</div>

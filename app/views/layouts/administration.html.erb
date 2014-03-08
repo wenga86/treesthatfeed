@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title><%= this_blog.blog_name %> – <%= controller.controller_name %></title>
+  <meta http-equiv="imagetoolbar" content="no" />
+  <%= stylesheet_link_tag "growler", "bootstrap", "administration_structure", "lightbox", 'jquery-ui-1.9.2.custom.min.css' %>
+  <%= javascript_include_tag "prototype", "lightbox", "effects", "builder", "dragdrop", "controls", "typo", "growler", "typo_carousel", "administration", "ckeditor/ckeditor" %>
+
+  <%= calendar_date_select_includes unless controller.class.name == "Admin::AlbumsController" %>
+
+<% if controller.class.name == "Admin::AlbumsController" %>
+  <%= javascript_include_tag  "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js", "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"%>
+  <script type="text/javascript">
+  $.noConflict()
+  // Code that uses other library's $ can follow here.
+</script>
+
+  <!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  jQuery(".fancybox-thumb").fancybox({
+    prevEffect  : 'none',
+    nextEffect  : 'none',
+    helpers : {
+      title : {
+        type: 'outside'
+      },
+      thumbs  : {
+        width : 50,
+        height  : 50
+      }
+    }
+  });
+});
+</script>
+<% end %>
+
+  <style type="text/css">
+    #carousel-content .slide { width: <%= this_blog.image_thumb_size %>; }
+  </style>
+</head>
+<body>
+  <div class='navbar navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div class='container-fluid'>
+        <%= link_to this_blog.blog_name, this_blog.base_url, { :class => 'brand' } %>
+        <ul class='nav push-right'>
+          <li class='dropdown' onmouseover='$("user_menu").style.display = "block"' onmouseout='$("user_menu").style.display = "none"'>
+            <a class="dropdown-toggle" href="#"><%= _("Logged in as %s", current_user.nickname)%></a>
+            <ul class="dropdown-menu" id="user_menu" style='display: none'>
+              <li><%= link_to(_("New Article"), {:controller => 'content', :action => 'new'}) %></li>
+              <li><%= link_to _("Profile"), { :controller => 'admin/profiles', :action => 'index'}  %></li>
+              <li><%= link_to _("%s &raquo;", "Log out").html_safe, {:controller => "/accounts", :action=>"logout"} %></li>
+            </ul>
+          </li>
+          <li class='divider-vertical'></li>
+          <li class="dropdown" onmouseover='$("help_menu").style.display = "block"' onmouseout='$("help_menu").style.display = "none"'>
+            <a class="dropdown-toggle" href="#"><%= _("Help")%></a>
+            <ul class="dropdown-menu" id="help_menu" style="display: none;">
+              <li><%= link_to _("Documentation"), "https://github.com/fdv/typo/wiki" %></li>
+              <li><%= link_to _("Report a bug"), "https://github.com/fdv/typo/issues" %></li>
+              <li><%= link_to _("In page plugins"), "https://github.com/fdv/typo/wiki/In-Page-Plugins" %></li>
+              <li><%= link_to _("Sidebar plugins"), "https://github.com/fdv/typo/wiki/Sidebar-plugins" %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class='container-fluid'>
+    <div class='row-fluid'>
+      <div class='span2'>
+        <div class='well' style='padding: 8px 0'>
+          <ul class='nav nav-list'>
+            <li class='nav-header'>
+              <%= _("Home") %>
+            </li>
+            <li class='<%= "active" if controller.controller_name == 'dashboard' %>'>
+              <%= link_to _('Dashboard'), {:controller => 'admin/dashboard'} %>
+            </li>
+            <li class="divider"></li>
+            <% for pm in current_user.project_modules %>
+            <%= content_tag :li, _(pm.menus.first.name), :class => "nav-header" %>
+              <%= subtabs_for(pm.name.to_sym)%>
+              <li class="divider"></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class='span10'>
+          <%= render_the_flash %>
+          <%= show_page_heading %>
+          <%= yield  %>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <%= link_to(this_blog.blog_name, this_blog.base_url) %> <%= _("is proudly powered by")%> Typo <%=h TYPO_VERSION %>
+  </footer>
+</body>
+</html>

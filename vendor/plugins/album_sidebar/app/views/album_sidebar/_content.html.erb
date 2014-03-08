@@ -1,0 +1,8 @@
+<% unless sidebar.photos.blank? -%>
+<h3><%= link_to _("Albums"), albums_url %></h3>
+<ul>
+<% sidebar.photos.each do |tag| -%>
+<li><%= link_to truncate(tag.name, :length => 15), albums_url(tag) %></li>
+<% end -%>
+</ul>
+<% end %>
