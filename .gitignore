@@ -9,6 +9,7 @@ db/*.sqlite*
 .rspec
 installer/rails_installer.yml
 /public/files
+/public/filemanager
 /public/images/theme
 /public/javascripts/ckeditor/config.js
 /public/javascripts/ckeditor/config.bak
