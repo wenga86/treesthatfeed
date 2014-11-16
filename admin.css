@@ -1,0 +1,221 @@
+body{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #333333;
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-size: .9em;
+}
+td, th, caption {
+	font-size: .9em;;
+}
+a{
+	color: #345F81;
+}
+a img{
+	border: none;
+}
+#leftNav{
+	position: absolute;
+	left: 0px; 
+	top: 0px; 
+	width: 168px; 
+	z-index: 1;
+}
+#leftNav a.leftNav, #leftNav a.leftNavOpen{
+	background-color: #B60843;
+	display: block;
+	border-bottom: 1px solid #76685D;
+	border-right: 1px solid #76685D;
+	padding: 2px 0px 2px 25px;
+	font-variant: small-caps;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: 4px 50%;
+}
+
+/*Navigation- Main Button Styles */
+/*Add a border to our first menu button, in this case lnProducts */
+#leftNav #lnProducts{
+	border-top: 1px solid #B60843;
+}
+#leftNav a.leftNav{
+	background-image: url(images/inactive.gif);
+}
+#leftNav a.leftNav:hover, #leftNav a.leftNavOpen, #leftNav a.leftNavOpen:hover{
+	background-image: url(images/expand.gif);
+}
+
+div.lnSubMenu{
+	text-indent: 0px;
+	padding-left: 5px;
+}
+div.lnSubMenu a{
+	color: #345F81;
+	text-decoration: none;
+	display: block;
+}
+div.lnSubMenu a:hover{
+	color: #2D5473;
+	text-decoration: underline;
+}
+
+#logOut{
+	text-align: center;
+	padding: 20px;
+}
+
+#divMainContent{
+	margin: 10px 10px 10px 180px;
+	padding: 10px;
+}
+#divMainContent h1{
+	font-size: 1em;
+	color: #B60843;
+	background: transparent;
+	border-bottom: 1px #000000;
+	margin: 0px;
+}
+#divMainContent h2{
+	font-size: 1em;
+	color: #B60843;
+	padding: 2px 0px 3px 5px;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+#divMainContent h3{
+	font-size: .9em;
+	color: #B60843;
+	border-bottom: 1px solid #000000;
+}
+
+/*Generic Table Styles */
+/*table{
+	border-collapse: collapse;
+	border: 1px solid #000000;
+	margin: 5px;
+}
+*/
+td, th{
+	/*border: 1px solid #000000;*/
+	/*padding: 3px;*/
+	vertical-align: top;
+}
+th{
+	background: #B60843;
+	color: #FFFFFF;
+	font-weight: bold;
+	white-space: nowrap;
+}
+caption{
+	color: #B60843;
+	font-weight: bold;
+	text-align: left;
+}
+
+/*Form Elements*/
+form{
+	margin: 0px;
+}
+fieldset, fieldset a{
+	color: #425929;
+	padding: 4px;
+}
+legend{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #76685D;
+}
+input, select, textarea{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	color: #B60843;
+	background: #FFFFFF;
+}
+input.formCheckbox, input.formRadio{
+	border: none;
+	background: transparent;
+}
+input.formButton{
+	background: #B60843;
+	border-top: 2px solid #34689A;
+	border-left: 2px solid #34689A;
+	border-right: 2px solid #000033;
+	border-bottom: 2px solid #000033;
+	color: #FFFFFF;
+	margin: 3px 3px 0px 3px;
+}
+td input.formButton{
+	margin: 0px 3px 0px 3px;
+}
+
+/* Admin Classes */
+
+/* Table Styles */
+table.noBorders, table.noBorders td{
+	border: none;
+}
+/* Tables used to display tabular Data. 
+In the Admin, it is only necessary to apply within a nested table that has the noBorders class applied. */
+table.tabularData, table.tabularData td, table.tabularData th{
+	border: 1px solid #000000;
+	border-collapse: collapse;
+}
+
+/* altRowEven & altRowOdd are used to style alternating table rows. */
+.altRowEven{
+	background-color: #E7E4E2;
+}
+.altRowOdd{
+	background-color: #DFDBD9;
+}
+
+.smallprint{
+	font-size: .7em;
+	color: #000000;
+}
+
+.errorMessage {
+	color: #990000;
+	font-weight: bold;
+}
+#mainBody {
+	position: inherit;
+	width: 712px;
+	padding: 0px 15px 15px 15px;
+}
+.galleryThumbs {
+	float: left; 
+	overflow: visible;
+	margin: 0px;
+	padding: 15px 3px 15px 3px;
+	width: 135px;
+	height: 120px;
+	text-align: center;
+}
+#galleryDetailImage {
+	float: left;
+	padding: 10px 10px 10px 0px;
+}
+#galleryDetailText {
+	float: left;
+}
+#cleanRow {
+	clear: both;
+}
+#clientList ul, #clientList ul li {
+	list-style: none;
+}
+#clientList ul {
+	float: left;
+	width: 230px;
+	padding-left: 5px;
+	margin-left: 0px;
+	font-size: .9em;
+}
+.clearBoth {
+	clear: both;
+}

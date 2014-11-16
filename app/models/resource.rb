@@ -60,24 +60,26 @@ class Resource < ActiveRecord::Base
     self
   end
 
-  def create_thumbnail
+  def create_thumbnail(auto=true)
     blog = Blog.default
-    return unless self.mime =~ /image/
+    return if (self.mime =~ /image/).nil?
+
     #return if self.resourcable_type == 'Album'
-    return unless File.exists?(fullpath("#{self.filename}"))
-    begin
+    return unless File.exists?(fullpath("#{self.filename}")) || auto == true
+    # begin
       img_orig = MiniMagick::Image.from_file(fullpath(self.filename))
       collection = self.resourcable_type == 'Album' ? ['thumb'] : ['medium', 'thumb']
 
       collection.each do |size|
-        next if File.exists?(fullpath("#{size}_#{self.filename}"))
+        binding.pry
+        next if File.exists?(fullpath("#{size}_#{self.filename}")) && auto == false
         resize = blog.send("image_#{size.to_s}_size").to_s
         img_orig = img_orig.resize("#{resize}x#{resize}")
         img_orig.write(fullpath("#{size}_#{self.filename}"))
       end
-    rescue
-      nil
-    end
+    # rescue
+    #   nil
+    # end
   end
 
   protected

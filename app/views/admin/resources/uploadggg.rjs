@@ -1,0 +1,3 @@
+
+page.insert_html :top, "images", {:partial => "admin/albums/show_image", :locals => {:image => @up, :album => @album} } if @up.present?
+page << "jQuery('h2.align-center').remove();"

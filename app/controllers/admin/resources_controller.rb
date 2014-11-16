@@ -27,11 +27,10 @@ class Admin::ResourcesController < Admin::BaseController
       @up.upload file
 
       @message = _('File uploaded: ')+ file.size.to_s
-      finish_upload_status "'#{@message}'"
     end
 
     respond_with(@album) do |format|
-        format.html { redirect_to :back }
+        format.html { finish_upload_status "'#{@message}'" }
         format.js {
           render :update do |page|
             page.insert_html :top, "images", {:partial => "admin/albums/show_image", :locals => {:image => @up, :album => @album} } if @up.present?

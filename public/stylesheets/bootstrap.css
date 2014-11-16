@@ -140,19 +140,19 @@ form#new_image .btn:first-child {
     overflow: hidden;
 }
 
- #upload_filename {
+ .fileupload-buttonbar #upload_filename {
   position: absolute;
-top: 0;
-right: 0;
-margin: 0;
-opacity: 0;
-filter: alpha(opacity=0);
-font-size: 23px;
-direction: ltr;
-cursor: pointer;
-height: 30px;
-line-height: 30px;
-width:100%;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  width:100%;
  }
 
 #images li a.fancybox.caption {position: absolute;bottom: 0; left: 0; background:#faa732;padding:5px 8px;color:#FFF;display:none;}

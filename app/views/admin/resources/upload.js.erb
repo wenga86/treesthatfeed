@@ -1,3 +1,0 @@
-<% binding.pry %>
-jQuery('ul#images').prepend("<%= escape_javascript(render :partial => 'admin/albums/show_image', :locals => {:image => @up, :album => @album}) if @up.present? %>");
-jQuery('h2.align-center').remove();
